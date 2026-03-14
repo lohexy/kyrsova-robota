@@ -1,0 +1,57 @@
+@model IEnumerable<EquipmentAccountingWeb.Models.Equipment>
+@using System.Security.Claims
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Реєстр обладнання аудиторій</h2>
+        <div class="text-end">
+            <span class="badge bg-info text-dark">👤 @User.Identity.Name</span>
+            <a asp-controller="Account" asp-action="Logout" class="btn btn-sm btn-outline-danger ms-2">Вихід</a>
+        </div>
+    </div>
+
+    @if (User.IsInRole("Admin") || User.IsInRole("ResponsiblePerson")) {
+    <div class="mb-3">
+        <a asp-controller="Equipment" asp-action="AddEquipment" class="btn btn-success">
+            ➕ Додати нове майно
+        </a>
+    </div>
+}
+
+    <table class="table table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Інв. номер</th>
+                <th>Назва</th>
+                <th>Аудиторія</th>
+                <th>Статус</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>@item.InventoryNumber</td>
+                    <td>@item.Name</td>
+                    <td>@item.ClassroomNumber</td>
+                    <td>
+                        <span class="badge @(item.Status == EquipmentAccountingWeb.Models.EquipmentStatus.Active ? "bg-success" : "bg-warning")">
+                            @item.Status
+                        </span>
+                    </td>
+                    <td>
+                        @if (User.IsInRole("Admin") || User.IsInRole("ResponsiblePerson")) {
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">📝 Редагувати</a>
+                        } else {
+                            <span class="text-muted small">Тільки перегляд</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="mt-4">
+        <a asp-action="ExportExcel" class="btn btn-outline-primary">Експорт в Excel (CSV)</a>
+    </div>
+</div>

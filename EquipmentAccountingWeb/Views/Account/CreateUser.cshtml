@@ -1,0 +1,49 @@
+@model EquipmentAccountingWeb.Models.User
+
+<div class="container mt-4">
+    <div class="card shadow" style="max-width: 500px; margin: auto;">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">➕ Створення нового користувача</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="CreateUser" method="post">
+                
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    </div>
+                }
+
+                <div class="mb-3">
+                    <label class="form-label">Логін (унікальний)</label>
+                    <input asp-for="Login" class="form-control" required placeholder="Наприклад: ivanov_p" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Повне ім'я (ПІБ)</label>
+                    <input asp-for="FullName" class="form-control" required placeholder="Іванов Петро" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Пароль</label>
+                    <input asp-for="Password" class="form-control" required type="text" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Роль у системі</label>
+                    <select asp-for="Role" class="form-select">
+                        <option value="Viewer">Викладач (Тільки перегляд)</option>
+                        <option value="ResponsiblePerson">МВО (Редагування обладнання)</option>
+                        <option value="Admin">Адміністратор (Повний доступ)</option>
+                    </select>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success px-4">➕ Створити</button>
+                    <a asp-action="Users" class="btn btn-outline-secondary">Скасувати</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+@model EquipmentAccountingWeb.Models.Equipment
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 text-center">
+            <h2>Додати нове обладнання</h2>
+            <hr />
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 shadow-sm p-5 bg-light rounded">
+            <form asp-action="AddEquipment" method="post">
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger fw-bold mb-3"></div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Інвентарний номер</label>
+                    <input asp-for="InventoryNumber" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Назва обладнання</label>
+                    <input asp-for="Name" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Аудиторія (Кабінет)</label>
+                    <input asp-for="ClassroomNumber" class="form-control" required />
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Початковий статус</label>
+                    <select asp-for="Status" class="form-select">
+                        <option value="Active">Активне (Працює)</option>
+                        <option value="InRepair">Потребує перевірки / В ремонті</option>
+                        <option value="WrittenOff">Списане</option>
+                    </select>
+</div>
+
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="submit" class="btn btn-success me-2">
+                        💾 Зберегти в базу
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Скасувати</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

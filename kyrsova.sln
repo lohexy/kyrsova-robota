@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentAccountingWeb", "EquipmentAccountingWeb\EquipmentAccountingWeb.csproj", "{5909AEEE-03E2-9FF0-1F37-29775374726B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5909AEEE-03E2-9FF0-1F37-29775374726B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5909AEEE-03E2-9FF0-1F37-29775374726B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5909AEEE-03E2-9FF0-1F37-29775374726B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5909AEEE-03E2-9FF0-1F37-29775374726B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C09BA62E-7A4B-44B1-8949-C7F1D8B39AE3}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,45 @@
+@model EquipmentAccountingWeb.Models.User
+
+<div class="container mt-4">
+    <div class="card shadow" style="max-width: 500px; margin: auto;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">✏️ Редагування користувача: @Model.Login</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="EditUser" method="post">
+                @* Логін ми не змінюємо, він є унікальним ключем *@
+                <input type="hidden" asp-for="Login" />
+
+                <div class="mb-3">
+                    <label class="form-label text-muted">Логін (не змінюється)</label>
+                    <input type="text" class="form-control" value="@Model.Login" disabled />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Повне ім'я</label>
+                    <input asp-for="FullName" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Новий пароль (залиште старим, якщо не хочете змінювати)</label>
+                    <input asp-for="Password" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Роль у системі</label>
+                    <select asp-for="Role" class="form-select">
+                        <option value="Admin">Адміністратор (Повний доступ)</option>
+                        <option value="ResponsiblePerson">МВО (Редагування обладнання)</option>
+                        <option value="Viewer">Викладач (Тільки перегляд)</option>
+                    </select>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success px-4">💾 Зберегти</button>
+                    <a asp-action="Users" class="btn btn-outline-secondary">Скасувати</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

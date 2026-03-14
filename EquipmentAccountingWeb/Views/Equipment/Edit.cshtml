@@ -1,0 +1,38 @@
+@model EquipmentAccountingWeb.Models.Equipment
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-warning text-dark">
+            <h4>Редагування обладнання: @Model.InventoryNumber</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+                
+                <div class="mb-3">
+                    <label class="form-label">Назва пристрою</label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Номер аудиторії</label>
+                    <input asp-for="ClassroomNumber" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Статус</label>
+                    <select asp-for="Status" class="form-select">
+                        <option value="Active">В роботі</option>
+                        <option value="InRepair">В ремонті</option>
+                        <option value="WrittenOff">Списано</option>
+                    </select>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Зберегти зміни</button>
+                    <a href="/list" class="btn btn-secondary">Скасувати</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
