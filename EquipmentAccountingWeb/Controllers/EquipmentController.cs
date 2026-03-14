@@ -49,25 +49,19 @@ public IActionResult Edit(Computer model)
 [HttpPost]
 public IActionResult AddEquipment(Equipment newEquipment)
 {
-    // Перевіряємо, чи всі обов'язкові поля заповнені правильно
     if (ModelState.IsValid)
     {
         try
         {
-            // Викликаємо наш новий метод із сервісу
             _inventoryService.AddEquipment(newEquipment);
-            
-            // Якщо все успішно, перенаправляємо користувача на головну сторінку списку
-            return RedirectToAction("Index", "Home"); // або "Index", "Equipment" залежно від твого проєкту
+            return RedirectToAction("Index", "Home");
         }
         catch (Exception ex)
         {
-            // Якщо номер вже існує (спрацював наш throw new Exception з сервісу)
             ModelState.AddModelError("", ex.Message);
         }
     }
     
-    // Якщо були помилки, повертаємо користувача назад на форму
     return View(newEquipment); 
 }
 
